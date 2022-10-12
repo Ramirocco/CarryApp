@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Carry</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">HelloCarry</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="A dónde ir" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar Destino</button>
+                </form>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./create.html">Ser Carry</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+<form id="formularioCarry">
+    <legend>Carguemos tu viaje</legend>
+    <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Seleccione Provincia de origen</label>
+        <select id="provinciaOrigen">
+            <option value="BUENOS AIRES">BUENOS AIRES</option>
+            <option value="CATAMARCA">CATAMARCA</option>
+            <option value="CHACO">CHACO</option>
+            <option value="CHUBUT">CHUBUT</option>
+            <option value="CIUDAD AUTONOMA DE Bs As">CIUDAD AUTONOMA DE Bs As</option>
+            <option value="CORDOBA">CORDOBA</option>
+            <option value="CORRIENTES">CORRIENTES</option>
+            <option value="ENTRE RIOS">ENTRE RIOS</option>
+            <option value="FORMOSA">FORMOSA</option>
+            <option value="JUJUY">JUJUY</option>
+            <option value="LA PAMPA">LA PAMPA</option>
+            <option value="LA RIOJA">LA RIOJA</option>
+            <option value="MENDOZA">MENDOZA</option>
+            <option value="MISIONES">MISIONES</option>
+            <option value="NEUQUEN">NEUQUEN</option>
+            <option value="RIO NEGRO">RIO NEGRO</option>
+            <option value="SALTA">SALTA</option>
+            <option value="SAN LUIS">SAN LUIS</option>
+            <option value="SANTA CRUZ">SANTA CRUZ</option>
+            <option value="SANTA FE">SANTA FE</option>
+            <option value="SANTIAGO DEL ESTERO">SANTIAGO DEL ESTERO</option>
+            <option value="TIERRA DEL FUEGO">TIERRA DEL FUEGO</option>
+            <option disabled="true" selected="true" value="">Seleccionar una Provincia</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Seleccione Provincia de destino</label>
+        <select id="provinciaDestino">
+            <option value="BUENOS AIRES">BUENOS AIRES</option>
+            <option value="CATAMARCA">CATAMARCA</option>
+            <option value="CHACO">CHACO</option>
+            <option value="CHUBUT">CHUBUT</option>
+            <option value="CIUDAD AUTONOMA DE Bs As">CIUDAD AUTONOMA DE Bs As</option>
+            <option value="CORDOBA">CORDOBA</option>
+            <option value="CORRIENTES">CORRIENTES</option>
+            <option value="ENTRE RIOS">ENTRE RIOS</option>
+            <option value="FORMOSA">FORMOSA</option>
+            <option value="JUJUY">JUJUY</option>
+            <option value="LA PAMPA">LA PAMPA</option>
+            <option value="LA RIOJA">LA RIOJA</option>
+            <option value="MENDOZA">MENDOZA</option>
+            <option value="MISIONES">MISIONES</option>
+            <option value="NEUQUEN">NEUQUEN</option>
+            <option value="RIO NEGRO">RIO NEGRO</option>
+            <option value="SALTA">SALTA</option>
+            <option value="SAN LUIS">SAN LUIS</option>
+            <option value="SANTA CRUZ">SANTA CRUZ</option>
+            <option value="SANTA FE">SANTA FE</option>
+            <option value="SANTIAGO DEL ESTERO">SANTIAGO DEL ESTERO</option>
+            <option value="TIERRA DEL FUEGO">TIERRA DEL FUEGO</option>
+            <option disabled="true" selected="true" value="">Seleccionar una Provincia</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="diaSalida">Dia de salida</label>
+        <input id="diaSalida" type="date"  name="trip-start"
+        value="2018-07-22" max="2023-12-31">
+    </div>
+    <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Seleccione Hora de Salida</label>
+        <select id="horaSalida">
+            <option value="00:00h">00:00h</option>
+            <option value="00:30h">00:30h</option>
+            <option value="01:00h">01:00h</option>
+            <option value="01:30h">01:30h</option>
+            <option value="02:00h">02:00h</option>
+            <option value="02:30h">02:30h</option>
+            <option value="03:00h">03:00h</option>
+            <option value="03:30h">03:30h</option>
+            <option value="04:00h">04:00h</option>
+            <option value="04:30h">04:30h</option>
+            <option value="05:00h">05:00h</option>
+            <option value="05:30h">05:30h</option>
+            <option value="06:00h">06:00h</option>
+            <option value="06:30h">06:30h</option>
+            <option value="07:00h">07:00h</option>
+            <option value="07:30h">07:30h</option>
+            <option value="08:00h">08:00h</option>
+            <option value="08:30h">08:30h</option>
+            <option value="09:00h">09:00h</option>
+            <option value="09:30h">09:30h</option>
+            <option value="10:00h">10:00h</option>
+            <option value="10:30h">10:30h</option>
+            <option value="11:00h">11:00h</option>
+            <option value="11:30h">11:30h</option>
+            <option value="12:00h">12:00h</option>
+            <option value="12:30h">12:30h</option>
+            <option value="13:00h">13:00h</option>
+            <option value="13:30h">13:30h</option>
+            <option value="14:30h">14:30h</option>
+            <option value="15:00h">15:00h</option>
+            <option value="16:30h">16:30h</option>
+            <option value="17:00h">17:00h</option>
+            <option value="18:30h">18:30h</option>
+            <option value="19:00h">19:00h</option>
+            <option value="20:30h">20:30h</option>
+            <option value="21:00h">21:00h</option>
+            <option value="21:30h">21:30h</option>
+            <option value="22:00h">22:00h</option>
+            <option value="22:30h">22:30h</option>
+            <option value="23:00h">23:00h</option>
+            <option value="23:30h">23:30h</option>
+            <option disabled="true" selected="true" value="">Seleccionar una Hora de Salida</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Seleccionar una Hora de Llegada estimada</label>
+        <select id="horaLlegada">
+            <option value="00:00h">00:00h</option>
+            <option value="00:30h">00:30h</option>
+            <option value="01:00h">01:00h</option>
+            <option value="01:30h">01:30h</option>
+            <option value="02:00h">02:00h</option>
+            <option value="02:30h">02:30h</option>
+            <option value="03:00h">03:00h</option>
+            <option value="03:30h">03:30h</option>
+            <option value="04:00h">04:00h</option>
+            <option value="04:30h">04:30h</option>
+            <option value="05:00h">05:00h</option>
+            <option value="05:30h">05:30h</option>
+            <option value="06:00h">06:00h</option>
+            <option value="06:30h">06:30h</option>
+            <option value="07:00h">07:00h</option>
+            <option value="07:30h">07:30h</option>
+            <option value="08:00h">08:00h</option>
+            <option value="08:30h">08:30h</option>
+            <option value="09:00h">09:00h</option>
+            <option value="09:30h">09:30h</option>
+            <option value="10:00h">10:00h</option>
+            <option value="10:30h">10:30h</option>
+            <option value="11:00h">11:00h</option>
+            <option value="11:30h">11:30h</option>
+            <option value="12:00h">12:00h</option>
+            <option value="12:30h">12:30h</option>
+            <option value="13:00h">13:00h</option>
+            <option value="13:30h">13:30h</option>
+            <option value="14:30h">14:30h</option>
+            <option value="15:00h">15:00h</option>
+            <option value="16:30h">16:30h</option>
+            <option value="17:00h">17:00h</option>
+            <option value="18:30h">18:30h</option>
+            <option value="19:00h">19:00h</option>
+            <option value="20:30h">20:30h</option>
+            <option value="21:00h">21:00h</option>
+            <option value="21:30h">21:30h</option>
+            <option value="22:00h">22:00h</option>
+            <option value="22:30h">22:30h</option>
+            <option value="23:00h">23:00h</option>
+            <option value="23:30h">23:30h</option>
+            <option disabled="true" selected="true" value="">Seleccionar una Hora de Llegada estimada</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Ingrese texto de interes al pasajero</label>
+        <input id="mensajeAPasajero" type="text" id="disabledTextInput" class="form-control"
+            placeholder="Disabled input">
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <div class="form-check">
+                <input id="fumar" class="form-check-input" type="checkbox" id="disabledFieldsetCheck">
+                <label class="form-check-label" for="disabledFieldsetCheck">
+                    permite fumar en el auto
+                </label>
+            </div>
+        </div>
+        <div class="mb-3 mascota">
+            <div class="form-check">
+                <input id="mascota" class="form-check-input" type="checkbox" id="disabledFieldsetCheck">
+                <label class="form-check-label" for="disabledFieldsetCheck">
+                    permite mascotas
+                </label>
+            </div>
+        </div>
+        <div class="mb-3 maleta">
+            <div class="form-check">
+                <input id="maleta" class="form-check-input" type="checkbox" id="disabledFieldsetCheck">
+                <label class="form-check-label" for="disabledFieldsetCheck">
+                    permite maletas
+                </label>
+            </div>
+        </div>
+        <div class="mb-3 paejes">
+            <div class="form-check">
+                <input id="peajes" class="form-check-input" type="checkbox" id="disabledFieldsetCheck">
+                <label class="form-check-label" for="disabledFieldsetCheck">
+                    peajes incluidos en tarifa final
+                </label>
+            </div>
+        </div>
+        <div class="input-group mb-3 row precioCarry">
+            <label class="label-control">Precio por pasajero</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input id="precio" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            </div>
+        </div>
+        <div class="input-group mb-3 row precioCarry">
+            <label class="label-control">Email de contacto</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">email</span>
+                <input id="precio" type="email" class="form-control">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    <form id="form">
+        <div class="field">
+          <label for="nombre">nombre</label>
+          <input type="text" name="nombre" id="nombre">
+        </div>
+        <div class="field">
+          <label for="reply_to">reply_to</label>
+          <input type="text" name="reply_to" id="reply_to">
+        </div>
+      
+        <input type="submit" id="button" value="Send Email" class="btn btn-primary">
+      </form>
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('UqDouIbLfinyawd1c')
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+<!-- <script src="../assets/index.js"></script> -->
+
+<script>const btn = document.getElementById('button');
+
+    document.getElementById('form')
+     .addEventListener('submit', function(event) {
+       event.preventDefault();
+    
+       btn.value = 'Sending...';
+    
+       const serviceID = 'default_service';
+       const templateID = 'TEMPLATESECOME';
+    
+       emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+          btn.value = 'Send Email';
+          alert('Sent!');
+        }, (err) => {
+          btn.value = 'Send Email';
+          alert(JSON.stringify(err));
+        });
+    });</script>
+<script src="../assets/ok.js"></script>
+
+</body>
+</html>
