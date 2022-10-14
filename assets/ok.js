@@ -3,6 +3,7 @@ let infoFormulario;
 let nuevoViaje;
 let objetoViaje;
 let tarjetasEnHTML = document.getElementById("tarjetear");
+let viajeEnTarjetaIndex;
 
 let mensajesTarjetas1 = {
     fumador: "usted podria fumar en el vehiculo",
@@ -40,7 +41,7 @@ class Viaje {
     }
 }
 
-
+formularioCarry != null?
 formularioCarry.addEventListener("submit", (e) => {
     e.preventDefault();
     infoFormulario = e.target.children;
@@ -99,7 +100,7 @@ formularioCarry.addEventListener("submit", (e) => {
             objetoViaje = new Viaje (cargados);
             console.log (objetoViaje);
 
-            let viajeEnTarjetaIndex = `<section  class="CardsViaje">
+            viajeEnTarjetaIndex = `<section  class="CardsViaje">
                 <div class="card" style="width: 18rem">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
@@ -125,11 +126,7 @@ formularioCarry.addEventListener("submit", (e) => {
             </section>`;
             console.log (viajeEnTarjetaIndex);
             
-            console.log(miSection);
-            tarjetaEnHTML.innerText +=  viajeEnTarjetaIndex;
-            console.log(miSection);
-            
         }
-    })
-
-});
+        });}):console.log ("No se encuentra FormularioCarry");
+        function escribirTarjeta(){tarjetasEnHTML.innerHTML +=  viajeEnTarjetaIndex};
+        tarjetasEnHTML != null ? escribirTarjeta() : console.log("No se encuentra el id") ;
