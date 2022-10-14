@@ -1,10 +1,18 @@
+//OBTENER ELEMENTOS DEL DOM (FORMULARIO DE SERCARRY.HTML Y LUGAR PARA IMPRIMIR DE INDEX.HTML)
+//formulario
 let formularioCarry = document.getElementById("formularioCarry");
+//sitio a imprimir
+let tarjetasEnHTML = document.getElementById("tarjetear");
+
+
 let infoFormulario;
 let nuevoViaje;
 let objetoViaje;
-let tarjetasEnHTML = document.getElementById("tarjetear");
+
+//ESTA VARIABLE ES EL CONTENIDO DE LA TARJETA, QUE NO PUEDO HACERLA GLOBAL A TODOS LOS HTML
 let viajeEnTarjetaIndex;
 
+//mensajes para tarjetas
 let mensajesTarjetas1 = {
     fumador: "usted podria fumar en el vehiculo",
     noFumador: "usted NO podria fumar en el vehiculo",
@@ -19,6 +27,7 @@ let mensajesTarjetas1 = {
     diaSalida: `El Carry saldrá el dia `,
 };
 
+//constructor de viaje con ensajes a imprimir
 class Viaje {
     constructor(obj) {
         this.id = obj.id;
@@ -41,10 +50,13 @@ class Viaje {
     }
 }
 
+//FUNCION SI, SI HAY FORMULARIO CREA LA TARJETA A IMPRIMIR
 formularioCarry != null?
+//escucha evento Submit
 formularioCarry.addEventListener("submit", (e) => {
     e.preventDefault();
     infoFormulario = e.target.children;
+    //variables del form
     let provinciaOrigenSelec = document.getElementById("provinciaOrigen").value;
     let provinciaDestinoSelec = document.getElementById("provinciaDestino").value;
     let horaSalidaSelec = document.getElementById("horaSalida").value;
@@ -58,6 +70,7 @@ formularioCarry.addEventListener("submit", (e) => {
     let precioSelec = document.getElementById("precio").value;
     let idSelec = Math.ceil(Math.random() * 10000000 + 10000);
 
+    //objeto a subir al Local
     nuevoViaje = {
         idUnico: idSelec,
         origen: provinciaOrigenSelec,
@@ -72,12 +85,10 @@ formularioCarry.addEventListener("submit", (e) => {
         peajes: peajesSelec,
         precio: precioSelec,
     }
-
+    //subida de objeto
     localStorage.setItem(`viaje ${idSelec}`, JSON.stringify(nuevoViaje));
 
-
-
-
+    //ALERT PARA CONFIRMAR LA SUBIDA 
     Swal.fire({
         title: 'Casi listos, Carry',
         html: `<h3>Si llenaste todo bien dale al botón Azul.</h3>
@@ -94,12 +105,15 @@ formularioCarry.addEventListener("submit", (e) => {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'entendido Bro',
+        //  SI CONFIRMA EL RESULTADO ME CREA LA ETIQUETA PRA IMPRIMIR
     }).then((result) => {
         if (result.isConfirmed) {
+            //Obtiene datos del Local
             let cargados = JSON.parse(localStorage.getItem(`viaje ${idSelec}`));
+            //Crea por constructor la tarjeta
             objetoViaje = new Viaje (cargados);
             console.log (objetoViaje);
-
+            // VARIABLE PARA HACER GLOBAL (HTML que escribe}
             viajeEnTarjetaIndex = `<section  class="CardsViaje">
                 <div class="card" style="width: 18rem">
                     <img src="..." class="card-img-top" alt="...">
@@ -127,6 +141,10 @@ formularioCarry.addEventListener("submit", (e) => {
             console.log (viajeEnTarjetaIndex);
             
         }
+        //Si no hay formulario (index.html) Consolea esto
         });}):console.log ("No se encuentra FormularioCarry");
+        //FUNCION SI, SI EXISTE EL LUGAR PARA IMPRMIR HACE UN INNER!!!! Mediante la funcion
+        //funcion para escribir
         function escribirTarjeta(){tarjetasEnHTML.innerHTML +=  viajeEnTarjetaIndex};
+        //funcion SI con funcion de escribir, sino (sercarry.html) consolea eso. 
         tarjetasEnHTML != null ? escribirTarjeta() : console.log("No se encuentra el id") ;
