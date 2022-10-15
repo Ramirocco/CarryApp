@@ -1,5 +1,5 @@
 function obtenerViajes() {
-    const archivo = '../assets/Json/index.json';
+    const archivo = '../Json/index.json';
 
     fetch(archivo)
         .then(resultado => resultado.json())
