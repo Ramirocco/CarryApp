@@ -1,5 +1,5 @@
 function obtenerViajes() {
-    const archivo = '../assets/index.json';
+    const archivo = '../assets/Json/index.json';
 
     fetch(archivo)
         .then(resultado => resultado.json())
@@ -28,8 +28,8 @@ function obtenerViajes() {
                 //peajes
                 viaje.peajes == "true" ?  viaje.peajes = "Los precios incluyen los peajes y gastos " : viaje.peajes = "Los precios NO incluyen los peajes y gastos " ;               
                 
-                let viajesDeJson = `<section ; " class="CardsViaje" style="padding: 5px;">
-                <div class="card" style="width: 100%;  padding: 5px;">
+                let viajesDeJson = `<section ; " class="CardsViaje" ">
+                <div class="card">
                     <img src="./assets/img/images.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 id="tituloTarjetaCarry" class="card-title"><b>${viaje.origen} HASTA ${viaje.destino} </b></h5>
@@ -43,7 +43,7 @@ function obtenerViajes() {
                         <li id="mascotaCarry" class="list-group-item">${viaje.mascotas}</li>
                         <li id="maletaCarry" class="list-group-item">${viaje.maletas}</li>
                         <li id="peajeCarry" class="list-group-item">${viaje.peajes}</li>
-                        <li id="precioCarry" class="list-group-item">${viaje.precio}</li>
+                        <li id="precioCarry" class="list-group-item">El precio del viaje es de $ ${viaje.precio}</li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="reservarAsiento">Contactar al Carry</a>

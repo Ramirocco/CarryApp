@@ -1,0 +1,17 @@
+.CardsViaje {
+  padding: 5px;
+  
+}
+
+.card {
+  width: 100%;
+  padding: 5px;
+  background-color: #3e9df06b;
+}
+
+#tarjetasJson {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: center;
+}
