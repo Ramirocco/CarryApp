@@ -118,8 +118,8 @@ formularioCarry != null ?
                 objetoViaje = new Viaje(cargados);
                 console.log(objetoViaje);
                 // VARIABLE PARA HACER GLOBAL (HTML que escribe}
-                viajeEnTarjetaIndex = `<section  class="CardsViaje">
-                <div class="card" style="width: 18rem">
+                viajeEnTarjetaIndex = `<section  class="CardsViajeCargados">
+                <div class="card">
                     <img src="./assets/img/images.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 id="tituloTarjetaCarry" class="card-title">${objetoViaje.trayecto}</h5>
@@ -137,8 +137,7 @@ formularioCarry != null ?
                         <li id="precioCarry" class="list-group-item">${objetoViaje.precio}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="reservarAsiento">Reservar asiento</a>
-                        <a href="#" class="verPerfilDelCarry">Ver perfil del Carry</a>
+                        <a href="#" class="reservarAsiento">ELIMINAR VIAJE (PROXIMAMENTE)</a>
                     </div>
                 </div>
             </section>`;
