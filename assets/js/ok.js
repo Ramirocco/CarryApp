@@ -113,9 +113,6 @@ formularioCarry != null ?
         localStorage.setItem(`viaje ${idSelec}`, JSON.stringify(nuevoViaje));
                 //Obtiene datos del Local
                 let cargados = JSON.parse(localStorage.getItem(`viaje ${idSelec}`));
-                // escribo a index.json
-                const fs = require(`fs`); 
-                fs.writeFile (`./index.json`,`viaje ${idSelec}`,(error)=>{ error ? console.log(`error: ${error}`): console.log("cargado correctamente")});
                 //Crea por constructor la tarjeta
                 console.log(cargados);
                 objetoViaje = new Viaje(cargados);
