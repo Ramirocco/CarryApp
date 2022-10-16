@@ -1,6 +1,7 @@
 {
     "viajesEnJSON": [
-        {   "destino": "SANTA FE",
+        {
+            "destino": "SANTA FE",
             "diaSalida": "2018-06-22",
             "fumar": false,
             "horaLlegada": "12:54",
@@ -12,7 +13,8 @@
             "peajes": false,
             "precio": "567"
         },
-        {   "destino": "SANTA FE",
+        {
+            "destino": "SANTA FE",
             "diaSalida": "2018-06-28",
             "fumar": true,
             "horaLlegada": "22:00",
@@ -24,7 +26,47 @@
             "peajes": false,
             "precio": "1355"
         },
-        {   "destino": "SALTA",
+        {
+            "destino": "SANTA FE",
+            "diaSalida": "2018-06-28",
+            "fumar": true,
+            "horaLlegada": "22:00",
+            "idUnico": 116240,
+            "maletas": false,
+            "mascotas": false,
+            "mensaje": "escucho rock",
+            "origen": "JUJUY",
+            "peajes": false,
+            "precio": "1355"
+        },
+        {
+            "destino": "SANTA FE",
+            "diaSalida": "2018-06-28",
+            "fumar": true,
+            "horaLlegada": "22:00",
+            "idUnico": 116240,
+            "maletas": false,
+            "mascotas": false,
+            "mensaje": "escucho rock",
+            "origen": "JUJUY",
+            "peajes": false,
+            "precio": "1355"
+        },
+        {
+            "destino": "SANTA FE",
+            "diaSalida": "2018-06-28",
+            "fumar": true,
+            "horaLlegada": "22:00",
+            "idUnico": 116240,
+            "maletas": false,
+            "mascotas": false,
+            "mensaje": "escucho rock",
+            "origen": "JUJUY",
+            "peajes": false,
+            "precio": "1355"
+        },
+        {
+            "destino": "SALTA",
             "diaSalida": "2018-07-22",
             "fumar": false,
             "horaLlegada": "04:56",
@@ -36,7 +78,8 @@
             "peajes": false,
             "precio": "134"
         },
-        {   "destino": "MENDOZA",
+        {
+            "destino": "MENDOZA",
             "diaSalida": "2018-07-22",
             "fumar": false,
             "horaLlegada": "11:30",
@@ -48,17 +91,44 @@
             "peajes": false,
             "precio": "342"
         },
-        {   "destino": "CORRIENTES",
+        {
+            "destino": "CORRIENTES",
             "diaSalida": "2018-07-22",
             "fumar": false,
             "horaLlegada": "11:30",
-            "idUnico": 1166246,
+            "idUnico": 11266246,
             "maletas": true,
             "mascotas": false,
             "mensaje": "no llevo menores de 10 años",
             "origen": "BUENOS AIRES",
             "peajes": false,
             "precio": "342"
+        },
+        {
+            "destino": "Chaco",
+            "diaSalida": "2018-07-22",
+            "fumar": true,
+            "horaLlegada": "11:30",
+            "idUnico": 11662446,
+            "maletas": true,
+            "mascotas": true,
+            "mensaje": "no anda le aire acondicionado",
+            "origen": "MISIONES",
+            "peajes": false,
+            "precio": "3432"
+        },
+        {
+            "destino": "FORMOSA",
+            "diaSalida": "2018-07-22",
+            "fumar": false,
+            "horaLlegada": "11:30",
+            "idUnico": 11663346,
+            "maletas": true,
+            "mascotas": true,
+            "mensaje": "no llevo menores de 10 años",
+            "origen": "LA PAMPA",
+            "peajes": false,
+            "precio": "1302"
         }
     ]
 }

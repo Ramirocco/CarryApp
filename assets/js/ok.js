@@ -31,7 +31,7 @@ let mensajesTarjetas1 = {
 //constructor de viaje con ensajes a imprimir
 class Viaje {
     constructor(obj) {
-        this.id = obj.id;
+        this.idUnico = obj.idUnico;
         this.trayecto = obj.origen + "hasta " + obj.destino;
         this.horarioSalida = `El Carry sale a las` + obj.horaSalida;
         this.horarioDestino = `El Carry llega a las` + obj.horaDestino;
@@ -39,13 +39,13 @@ class Viaje {
         this.diaLlegada = `El carry legará el dia ` + obj.diaLlegada;
         this.mensaje = obj.mensaje;
         //if optimizado
-        obj.fumar == "true" ? this.maletas = mensajesTarjetas1.fumador : this.maletas = mensajesTarjetas1.noFumador;
+        obj.fumar == true ? this.fumar = mensajesTarjetas1.fumador : this.fumar = mensajesTarjetas1.noFumador;
         //mascota
-        obj.mascota == "true" ? this.mascotas = mensajesTarjetas1.animales : this.mascotas = mensajesTarjetas1.noAnimales;
+        obj.mascota == true ? this.mascotas = mensajesTarjetas1.animales : this.mascotas = mensajesTarjetas1.noAnimales;
         //maleta
-        obj.maleta == "true" ? this.maletas = mensajesTarjetas1.maleta : this.maletas = mensajesTarjetas1.noMaleta;
+        obj.maleta == true ? this.maletas = mensajesTarjetas1.maleta : this.maletas = mensajesTarjetas1.noMaleta;
         //peajes
-        obj.peajes == "true" ? this.peajes = mensajesTarjetas1.peaje : this.peajes = mensajesTarjetas1.noPeaje;
+        obj.peajes == true ? this.peajes = mensajesTarjetas1.peaje : this.peajes = mensajesTarjetas1.noPeaje;
         //
         this.precio = Number(obj.precio);
     }
@@ -77,24 +77,23 @@ formularioCarry != null ?
             origen: provinciaOrigenSelec,
             destino: provinciaDestinoSelec,
             diaSalida: diaSalidaSelec,
-            horaLlegada: diaSalidaSelec,
-            horaLlegada: horaSalidaSelec,
-            mensaje: horaLlegadaSelec,
+            horaSalida: horaSalidaSelec,
+            horaLlegada: horaLlegadaSelec,
+            mensaje: mensajeSelec,
             fumar: fumarSelec,
             mascotas: mascotasSelec,
             maletas: maletasSelec,
             peajes: peajesSelec,
             precio: precioSelec,
         }
-        //subida de objeto
-        localStorage.setItem(`viaje ${idSelec}`, JSON.stringify(nuevoViaje));
+
 
 
         //ALERT PARA CONFIRMAR LA SUBIDA 
         Swal.fire({
             title: 'Casi listos, Carry',
             html: `<h3>Si llenaste todo bien dale al botón Azul.</h3>
-        <p>Origen: ${provinciaOrigenSelec}, Dia Salida: ${diaSalidaSelec}, Hora Salid: ${horaSalidaSelec} </p>
+        <p>Origen: ${provinciaOrigenSelec}, Dia Salida: ${diaSalidaSelec}, Hora Salida: ${horaSalidaSelec} </p>
         <p>Destino:${provinciaDestinoSelec},Hora Llegada:${horaLlegadaSelec} </p>
         <p>Mensaje: ${mensajeSelec} </p>
         <p>Fumar: ${fumarSelec} </p>
@@ -110,24 +109,30 @@ formularioCarry != null ?
             //  SI CONFIRMA EL RESULTADO ME CREA LA ETIQUETA PRA IMPRIMIR
         }).then((result) => {
             if (result.isConfirmed) {
+        //subida de objeto
+        localStorage.setItem(`viaje ${idSelec}`, JSON.stringify(nuevoViaje));
                 //Obtiene datos del Local
                 let cargados = JSON.parse(localStorage.getItem(`viaje ${idSelec}`));
+                // escribo a index.json
+                const fs = require(`fs`); 
+                fs.writeFile (`./index.json`,`viaje ${idSelec}`,(error)=>{ error ? console.log(`error: ${error}`): console.log("cargado correctamente")});
                 //Crea por constructor la tarjeta
+                console.log(cargados);
                 objetoViaje = new Viaje(cargados);
                 console.log(objetoViaje);
                 // VARIABLE PARA HACER GLOBAL (HTML que escribe}
                 viajeEnTarjetaIndex = `<section  class="CardsViaje">
                 <div class="card" style="width: 18rem">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="./assets/img/images.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 id="tituloTarjetaCarry" class="card-title">${objetoViaje.trayecto}</h5>
                         <p id="mensajeCarry" class="card-text">${objetoViaje.mensaje}</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li id="diaSalidaCarry" class="list-group-item">${objetoViaje.diaSalida}</li>
-                        <li id="horaSalidaCarry" class="list-group-item">${objetoViaje.horaSalida}</li>
-                        <li id="horaLlegadaCarry" class="list-group-item">${objetoViaje.horaLlegada}/li>
-                        <li id="idUnicoCarry" class="list-group-item">${objetoViaje.id}</li>
+                        <li id="horaSalidaCarry" class="list-group-item">${objetoViaje.horarioSalida}</li>
+                        <li id="horaLlegadaCarry" class="list-group-item">${objetoViaje.horarioLlegada}</li>
+                        <li id="idUnicoCarry" class="list-group-item">${objetoViaje.idUnico}</li>
                         <li id="fumarCarry" class="list-group-item">${objetoViaje.fumar}</li>
                         <li id="mascotaCarry" class="list-group-item">${objetoViaje.mascotas}</li>
                         <li id="maletaCarry" class="list-group-item">P${objetoViaje.maletas}</li>
@@ -144,48 +149,17 @@ formularioCarry != null ?
                 //Codigo para subir a array y despues filtrar
                 arraysViajes.push(nuevoViaje);
                 localStorage.setItem(`viajes`, JSON.stringify(arraysViajes));
+                localStorage.setItem(`stringViaje`, JSON.stringify(viajeEnTarjetaIndex));
             }
             //Si no hay formulario (index.html) Consolea esto
         });
     }) : console.log("No se encuentra FormularioCarry");
 //FUNCION SI, SI EXISTE EL LUGAR PARA IMPRMIR HACE UN INNER!!!! Mediante la funcion
 //funcion para escribir
+viajeEnTarjetaIndex = JSON.parse(localStorage.getItem(`stringViaje`));
+
 function escribirTarjeta() { tarjetasEnHTML.innerHTML += viajeEnTarjetaIndex };
+console.log (viajeEnTarjetaIndex);
 //funcion SI con funcion de escribir, sino (sercarry.html) consolea eso. 
 tarjetasEnHTML != null ? escribirTarjeta() : console.log("No se encuentra el id");
 
-//____________________________________________//
-//Codigo para filtrar y generar tarjetas
-let infoBusqueda;
-let busquedaFiltro = document.getElementById("busquedaFiltro");
-let infoFiltroMayuscula;
-let infoFiltro;
-let cargadosArray;
-let filtrados;
-//FUNCION SI
-
-busquedaFiltro != null ?
-    //escucha evento Submit
-    busquedaFiltro.addEventListener("submit", (e) => {
-        e.preventDefault();
-        infoBusqueda = e.target.children;
-        //variable del form busqueda
-        infoFiltro = document.getElementById("infoFiltro").value;
-        infoFiltroMayuscula = infoFiltro.toUpperCase();
-        console.log (infoFiltroMayuscula);
-
-    //recupero el array de todos los viajes
-    cargadosArray = JSON.parse(localStorage.getItem(`viajes`));
-    console.log (cargadosArray);
-    //filtro los viajes de ese destino
-    filtrados = cargadosArray.filter(viaje => viaje.destino == infoFiltroMayuscula);
-    console.log(filtrados);
-        //POR CADA OBJETO FILTRADO CREO LA TARJETA
-        tarjetasJson
-
-
-
-
-
-        
-}) : "";
