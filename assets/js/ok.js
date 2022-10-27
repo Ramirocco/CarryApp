@@ -4,6 +4,8 @@ let formularioCarry = document.getElementById("formularioCarry");
 //sitio a imprimir
 let tarjetasEnHTML = document.getElementById("tarjetear");
 
+let tarjetasDeJson = document.getElementById("tarjetasJson");
+
 
 let infoFormulario;
 let nuevoViaje;
@@ -118,7 +120,8 @@ formularioCarry != null ?
                 objetoViaje = new Viaje(cargados);
                 console.log(objetoViaje);
                 // VARIABLE PARA HACER GLOBAL (HTML que escribe}
-                viajeEnTarjetaIndex = `<section  class="CardsViajeCargados">
+                viajeEnTarjetaIndex = `<section id="ultimoCargado"  class="CardsViajeSubido
+                ">
                 <div class="card">
                     <img src="./assets/img/images.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -137,7 +140,7 @@ formularioCarry != null ?
                         <li id="precioCarry" class="list-group-item">${objetoViaje.precio}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="reservarAsiento">ELIMINAR VIAJE (PROXIMAMENTE)</a>
+                    <button id="eliminarviaje" type="button">Eliminar viaje</button>
                     </div>
                 </div>
             </section>`;
@@ -154,8 +157,36 @@ formularioCarry != null ?
 //funcion para escribir
 viajeEnTarjetaIndex = JSON.parse(localStorage.getItem(`stringViaje`));
 
-function escribirTarjeta() { tarjetasEnHTML.innerHTML += viajeEnTarjetaIndex };
+function escribirTarjeta() { tarjetasEnHTML.innerHTML += viajeEnTarjetaIndex;
+    tarjetasDeJson.innerHTML += viajeEnTarjetaIndex; };
 console.log (viajeEnTarjetaIndex);
 //funcion SI con funcion de escribir, sino (sercarry.html) consolea eso. 
 tarjetasEnHTML != null ? escribirTarjeta() : console.log("No se encuentra el id");
 
+eliminarViaje = document.getElementById("eliminarviaje");
+eliminarViaje.addEventListener("click", function () { 
+
+    Swal.fire({
+        title: 'ELIMIAMOS EL VIJAE ?',
+        html: `<h3>Si estás segurx dale al botón azul.</h3>`,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'entendido Bro',
+        //  SI CONFIRMA EL RESULTADO ME CREA LA ETIQUETA PRA IMPRIMIR
+    }).then((result) => {
+        if (result.isConfirmed) {
+            viajeEnTarjetaIndex = `<section  class="CardsViajeCargados">
+    <div class="card">
+        <img src="./assets/img/images.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 id="tituloTarjetaCarry" class="card-title">Hola Carry</h5>
+            <p id="mensajeCarry" class="card-text">Tratá de cargar un viaje nuevo</p>
+        </div>
+    </div>
+</section>`;
+    console.log(viajeEnTarjetaIndex);
+
+    tarjetasEnHTML.innerHTML = viajeEnTarjetaIndex;
+    tarjetasDeJson.firstElementChild.remove(); }
+})});
